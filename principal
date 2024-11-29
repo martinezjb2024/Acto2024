@@ -1,17 +1,89 @@
-function agregarPersona() {
-    const nombre = document.getElementById('nombrePersona').value;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Tareas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gestión de Tareas</h1>
 
-    fetch('http://127.0.0.1:5000/personas', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ nombre: nombre }),
-    })
-    .then(response => response.json())
-    .then(data => {
-        alert(data.mensaje); // Muestra un mensaje de éxito
-        listarPersonas(); // Actualiza la lista de personas
-    })
-    .catch(error => console.error('Error:', error));
-}
+        <!-- Formulario para agregar personas -->
+        <h2>Agregar Persona</h2>
+        <div class="form-group">
+            <label for="nombrePersona">Nombre de la Persona:</label>
+            <input type="text" id="nombrePersona" placeholder="Escribe el nombre">
+            <button onclick="agregarPersona()">Agregar Persona</button>
+        </div>
+
+        <!-- Formulario para agregar tareas -->
+        <h2>Agregar Tarea</h2>
+        <div class="form-group">
+            <label for="nombreTarea">Nombre de la Tarea:</label>
+            <input type="text" id="nombreTarea" placeholder="Escribe el nombre de la tarea">
+        </div>
+        <div class="form-group">
+            <label for="maxParticipantes">Máximo de Participantes:</label>
+            <input type="number" id="maxParticipantes" min="1" placeholder="Cantidad máxima de participantes">
+            <button onclick="agregarTarea()">Agregar Tarea</button>
+        </div>
+
+        <!-- Listado de personas -->
+        <h2>Personas</h2>
+        <table id="tablaPersonas">
+            <
+
