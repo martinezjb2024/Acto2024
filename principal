@@ -1,0 +1,17 @@
+function agregarPersona() {
+    const nombre = document.getElementById('nombrePersona').value;
+
+    fetch('http://127.0.0.1:5000/personas', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ nombre: nombre }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data.mensaje); // Muestra un mensaje de éxito
+        listarPersonas(); // Actualiza la lista de personas
+    })
+    .catch(error => console.error('Error:', error));
+}
